@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "editorconfig": "~0.11.1",
+    "grunt-browserify2": "~0.1.7",
+    "grunt": "~0.4.1",
+    "grunt-contrib-sass": "~0.3.0",
+    "grunt-contrib-watch": "~0.4.3"
+  }
+}

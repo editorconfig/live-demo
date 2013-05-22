@@ -9,11 +9,11 @@ Once completed this will use the [EditorConfig JavaScript library][js].
 
 To build the SCSS files and prepare the JavaScript for the browser:
 
-  grunt
+    grunt
 
 To watch the files and rebuild on changes:
 
-  grunt dev
+    grunt dev
 
 [js]: https://github.com/editorconfig/editorconfig-core-js
 [node.js]: http://nodejs.org/

@@ -9,6 +9,6 @@ If modifying the code, [sass][], [pyscss][], or [node-sass][] are required to
 convert the SCSS file to the CSS file.
 
 [js]: https://github.com/editorconfig/editorconfig-core-js
-[scss]: http://sass-lang.com/download.html
+[sass]: http://sass-lang.com/download.html
 [pyscss]: https://github.com/Kronuz/pyScss
 [node-sass]: https://npmjs.org/package/node-sass

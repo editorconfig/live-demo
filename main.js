@@ -1,4 +1,5 @@
 (function() {
+
   Element.prototype.on = Element.prototype.addEventListener;
   var $ = document.querySelectorAll.bind(document);
   var $$ = function(selector) {
@@ -27,4 +28,5 @@
     });
     setTextAreaHeight(el);
   });
+
 }());

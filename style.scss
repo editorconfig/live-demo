@@ -1,0 +1,32 @@
+$page-width: 800px;
+
+.content {
+  width: $page-width;
+  margin: 0 auto;
+}
+
+section {
+  $section-margin: 20px;
+  $section-width: $page-width / 2 - $section-margin * 2;
+  $input-margin: 20px;
+  $input-padding: 5px;
+  background-color: #60B9CE;
+  width: $section-width;
+  margin: $section-margin;
+  padding: $input-margin/2 0 0 0;
+  input, textarea, pre {
+    $width: $section-width - $input-margin * 2;
+    background-color: #ffffff;
+    resize: none;
+    margin: $input-margin/2 $input-margin;
+    padding: $input-padding;
+    width: $width;
+    &.properties { width: $width - $input-padding * 2; }
+    border: 0;
+  }
+}
+
+.editorconfig { float: left; }
+
+.output { float: right; }
+

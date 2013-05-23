@@ -1,10 +1,13 @@
-(function() {
+(function($, $$) {
 
-  Element.prototype.on = Element.prototype.addEventListener;
-  var $ = document.querySelectorAll.bind(document);
-  var $$ = function(selector) {
-    return Array.prototype.slice.call($(selector), 0);
-  };
+  var editorconfig = require('./node_modules/editorconfig/editorconfig.js');
+
+  function createFiles() {
+    return [{
+      name: $.get('.editorconfig input').value,
+      contents: $.get('.editorconfig textarea').value
+    }];
+  }
 
   var setTextAreaHeight = function (el) {
     // Set textarea height
@@ -13,20 +16,35 @@
 
     // Get maximum section height
     var maxHeight = 0;
-    $$('section').forEach(function(el) {
+    $$.byTag('section').forEach(function(el) {
       el.style.height = 'auto';
       if (el.clientHeight > maxHeight) maxHeight = el.clientHeight;
     });
 
     // Set section height
-    $$('section').forEach(function(el) { el.style.height = maxHeight; });
+    $$.byTag('section').forEach(function(el) { el.style.height = maxHeight; });
   };
 
-  $$('textarea').forEach(function(el) {
-    el.on('input', function () {
-      setTextAreaHeight(el);
-    });
-    setTextAreaHeight(el);
+  $$.byTag('textarea').forEach(function(el) {
+    var textareaInput = function () { setTextAreaHeight(el); };
+    el.on('input', textareaInput);
+    textareaInput();
   });
 
-}());
+  $$('input, textarea').forEach(function (el) {
+    var updateDemo = function () {
+      var configFiles = createFiles();
+      $$('.output [name=filename]').forEach(function (el) {
+        var output = "";
+        var config = editorconfig.parseFromFiles(el.value, configFiles);
+        for (var key in config) {
+          output += key + " = " + config[key] + "\n";
+        }
+        $.get('.output pre').innerText = output;
+      });
+    };
+    el.on('input', updateDemo);
+    updateDemo();
+  });
+
+}(vQuery, wQuery));

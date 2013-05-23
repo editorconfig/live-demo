@@ -7,11 +7,18 @@ Once completed this will use the [EditorConfig JavaScript library][js].
 
 [Node.js][] and [grunt-cli][] are required to modify the CSS or JavaScript.
 
-To build the SCSS files and prepare the JavaScript for the browser:
+Development
+-----------
 
-    grunt
+First install the dependencies using npm:
 
-To watch the files and rebuild on changes:
+    npm install
+
+Everytime you change the SCSS or JavaScript files you will need to rebuild the minified JavaScript and CSS.  Use build the site:
+
+    grunt build
+
+To rebuild the site every time you make a change to a file run the watch daemon:
 
     grunt dev
 

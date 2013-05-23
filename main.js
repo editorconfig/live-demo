@@ -1,11 +1,11 @@
-(function($, $$) {
+(function($$) {
 
   var editorconfig = require('./node_modules/editorconfig/editorconfig.js');
 
   function createFiles() {
     return [{
-      name: $.get('.editorconfig input').value,
-      contents: $.get('.editorconfig textarea').value
+      name: $$.get('.editorconfig input').value,
+      contents: $$.get('.editorconfig textarea').value
     }];
   }
 
@@ -40,11 +40,11 @@
         for (var key in config) {
           output += key + " = " + config[key] + "\n";
         }
-        $.get('.output pre').innerText = output;
+        $$.get('.output pre').innerText = output;
       });
     };
     el.on('input', updateDemo);
     updateDemo();
   });
 
-}(vQuery, wQuery));
+}(vQuery));

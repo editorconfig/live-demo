@@ -32,7 +32,7 @@ module.exports = function(grunt) {
     },
     watch: {
       js: {
-        files: ['main.js'],
+        files: ['main.js', 'vquery.js'],
         tasks: ['browserify2', 'uglify']
       },
       css: {

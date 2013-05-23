@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     browserify2: {
       main: {
         entry: './main.js',
-        compile: 'mani.browser.js'
+        compile: 'main.browser.js'
       }
     },
     uglify: {

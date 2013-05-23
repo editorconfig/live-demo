@@ -19,4 +19,5 @@
 
   window.vQuery = $;
   window.wQuery = $$;
+
 }(document));

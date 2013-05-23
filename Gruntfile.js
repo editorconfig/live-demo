@@ -7,26 +7,26 @@ module.exports = function(grunt) {
     sass: {
       main: {
         src: 'style.scss',
-        dest: 'style.css'
+        dest: '_build/style.css'
       }
     },
     browserify2: {
       main: {
         entry: './main.js',
-        compile: 'main.browser.js'
+        compile: '_build/main.browser.js'
       }
     },
     uglify: {
       my_target: {
         files: {
-          'app.min.js': ['vquery.js', 'main.browser.js']
+          '_build/app.min.js': ['vquery.js', '_build/main.browser.js']
         }
       }
     },
     cssmin: {
       combine: {
         files: {
-          'style.min.css': ['style.css']
+          '_build/style.min.css': ['style.css']
         }
       }
     },

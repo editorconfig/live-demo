@@ -1,26 +1,26 @@
 /* vQuery library
  *
- * Exposes uQuery and vQuery objects
+ * Copyright 2013 Trey Hunner.  Released under MIT license.
  *
- * uQuery function and uQuery methods (except get) return NodeList of matches
- * uQuery: Selector and optional node -> NodeList
- * uQuery.byTag: Tag name and optional node -> NodeList
- * uQuery.byClass: Class name and optional node -> NodeList
- * uQuery.get: Selector and optional node -> first matching node
+ * Exposes vQuery objects and extends Element and NodeList
  *
- * vQuery function and vQuery methods (except get) return Array of matches
- * vQuery: Selector and optional node -> Array of matches
- * vQuery.byTag: Tag name and optional node -> Array of matches
- * vQuery.byClass: Class name and optional node -> Array of matches
+ * vQuery function and vQuery methods (except get) return NodeList of matches
+ * vQuery: Selector and optional node -> NodeList of matches
+ * vQuery.byTag: Tag name and optional node -> NodeList of matches
+ * vQuery.byClass: Class name and optional node -> NodeList of matches
  * vQuery.get: Selector and optional node -> first matching node
-*
+ *
+ * Extensions of the DOM:
+ * - Adds "on" method to Element
+ * - Adds "forEach" method to NodeList
+ *
  */
 (function() {
 
   var nodeOrDocument = function (arg) {
-    var func = document[arg];
     return function(selector, node) {
-      return func.call(node || document, selector);
+      if (!node) node = document;
+      return node[arg].call(node, selector);
     };
   };
 
@@ -31,6 +31,7 @@
     };
   };
 
+  NodeList.prototype.forEach = Array.prototype.forEach;
   Element.prototype.on = Element.prototype.addEventListener;
 
   var $ = nodeOrDocument('querySelectorAll');
@@ -39,13 +40,8 @@
   $.get = nodeOrDocument('querySelector');
   $.getByClass = function (s) { return $.byClass(s)[0]; };
   $.getByTag = function (s) { return $.byTag(s)[0]; };
+  $.getById = nodeOrDocument('getElementById');
 
-  var $$ = toArray($);
-  $$.byTag = toArray($.byTag);
-  $$.byClass = toArray($.byClass);
-  $$.get = $.get;
-
-  window.uQuery = $;
-  window.vQuery = $$;
+  window.vQuery = $;
 
 }());

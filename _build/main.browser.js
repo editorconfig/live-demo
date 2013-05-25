@@ -1,12 +1,12 @@
 ;(function(e,t,n){function i(n,s){if(!t[n]){if(!e[n]){var o=typeof require=="function"&&require;if(!s&&o)return o(n,!0);if(r)return r(n,!0);throw new Error("Cannot find module '"+n+"'")}var u=t[n]={exports:{}};e[n][0](function(t){var r=e[n][1][t];return i(r?r:t)},u,u.exports)}return t[n].exports}var r=typeof require=="function"&&require;for(var s=0;s<n.length;s++)i(n[s]);return i})({1:[function(require,module,exports){
-(function($$) {
+(function($) {
 
   var editorconfig = require('./node_modules/editorconfig/editorconfig.js');
 
   function createFiles() {
     return [{
-      name: $$.get('.editorconfig input').value,
-      contents: $$.get('.editorconfig textarea').value
+      name: $.get('.editorconfig input').value,
+      contents: $.get('.editorconfig textarea').value
     }];
   }
 
@@ -17,31 +17,31 @@
 
     // Get maximum section height
     var maxHeight = 0;
-    $$.byTag('section').forEach(function(el) {
+    $.byTag('section').forEach(function(el) {
       el.style.height = 'auto';
       if (el.clientHeight > maxHeight) maxHeight = el.clientHeight;
     });
 
     // Set section height
-    $$.byTag('section').forEach(function(el) { el.style.height = maxHeight; });
+    $.byTag('section').forEach(function(el) { el.style.height = maxHeight; });
   };
 
-  $$.byTag('textarea').forEach(function(el) {
+  $.byTag('textarea').forEach(function(el) {
     var textareaInput = function () { setTextAreaHeight(el); };
     el.on('input', textareaInput);
     textareaInput();
   });
 
-  $$('input, textarea').forEach(function (el) {
+  $('input, textarea').forEach(function (el) {
     var updateDemo = function () {
       var configFiles = createFiles();
-      $$('.output [name=filename]').forEach(function (el) {
+      $('.output [name=filename]').forEach(function (el) {
         var output = "";
         var config = editorconfig.parseFromFiles(el.value, configFiles);
         for (var key in config) {
           output += key + " = " + config[key] + "\n";
         }
-        $$.get('.output pre').innerText = output;
+        $.get('.output pre').innerText = output;
       });
     };
     el.on('input', updateDemo);

@@ -17,12 +17,16 @@ section {
   input, textarea, pre {
     $width: $section-width - $input-margin * 2;
     background-color: #ffffff;
-    resize: none;
+    resize: vertical;
     margin: $input-margin/2 $input-margin;
     padding: $input-padding;
     width: $width;
     &.properties { width: $width - $input-padding * 2; }
     border: 0;
+  }
+  textarea, pre {
+    height: 400px;
+    box-sizing: border-box;
   }
 }
 

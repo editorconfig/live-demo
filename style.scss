@@ -24,6 +24,10 @@ section {
     &.properties { width: $width - $input-padding * 2; }
     border: 0;
   }
+  textarea {
+    height: 200px;
+    box-sizing: border-box;
+  }
 }
 
 .editorconfig { float: left; }

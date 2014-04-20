@@ -16,6 +16,9 @@ section {
     border: 0; }
     section input.properties, section textarea.properties, section pre.properties {
       width: 310px; }
+  section textarea {
+    height: 200px;
+    box-sizing: border-box; }
 
 .editorconfig {
   float: left; }

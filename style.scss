@@ -17,7 +17,7 @@ section {
   input, textarea, pre {
     $width: $section-width - $input-margin * 2;
     background-color: #ffffff;
-    resize: vertical;
+    resize: none;
     margin: $input-margin/2 $input-margin;
     padding: $input-padding;
     width: $width;
@@ -25,7 +25,7 @@ section {
     border: 0;
   }
   textarea, pre {
-    height: 400px;
+    height: 200px;
     box-sizing: border-box;
   }
 }

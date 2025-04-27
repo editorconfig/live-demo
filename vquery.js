@@ -16,8 +16,10 @@
  *
  */
 (function() {
+    NodeList.prototype.forEach = Array.prototype.forEach;
+    HTMLCollection.prototype.forEach = Array.prototype.forEach;
 
-  var nodeOrDocument = function (arg) {
+    var nodeOrDocument = function (arg) {
     return function(selector, node) {
       if (!node) node = document;
       return node[arg].call(node, selector);
